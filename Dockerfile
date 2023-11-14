@@ -15,7 +15,7 @@ RUN ssh-keyscan github.com > /root/.ssh/known_hosts
 RUN conda update -n base -c defaults conda
 
 WORKDIR /app
-COPY environment.yml .
+COPY . .
 
 # Creating the environment
 RUN --mount=type=ssh,id=github_ssh_key conda env create -f environment.yml
@@ -24,7 +24,7 @@ RUN --mount=type=ssh,id=github_ssh_key conda env create -f environment.yml
 RUN conda install -c conda-forge conda-pack
 
 # Use conda-pack to create a standalone environment in /venv:
-RUN conda-pack -n my_env_name -o /tmp/env.tar && \
+RUN conda-pack -n  -o /tmp/env.tar && \
 mkdir /venv && cd /venv && tar xf /tmp/env.tar && \
 rm /tmp/env.tar
 
