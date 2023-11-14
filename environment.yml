@@ -12,8 +12,6 @@ dependencies:
   - shap
   - streamlit
   - matplotlib
-  - ag-grid
   - plotly
   - seaborn
-  - evidently
 prefix: /Users/agnes/anaconda3/envs/my_working
