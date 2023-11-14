@@ -23,7 +23,7 @@ RUN --mount=type=ssh,id=github_ssh_key conda env create -f environment.yml
 # Installing conda-pack
 RUN conda install -c conda-forge conda-pack
 
-# Use conda-pack to create a standalone enviornment in /venv:
+# Use conda-pack to create a standalone environment in /venv:
 RUN conda-pack -n my_env_name -o /tmp/env.tar && \
 mkdir /venv && cd /venv && tar xf /tmp/env.tar && \
 rm /tmp/env.tar
@@ -37,10 +37,9 @@ RUN /venv/bin/conda-unpack
 # The runtime-stage image
 FROM debian:buster AS runtime
 LABEL version="1.0.0"
-LABEL maintainer="Kaveh Bakhtiyari"
-LABEL url="https://ssense.com"
-LABEL vcs-url="https://github.com/ssense/some-repo"
-LABEL description="Test Streamlit App"
+LABEL maintainer="Agnès Regaud"
+LABEL vcs-url="https://github.com/agnesR23/Projet7_OC_Datascientist"
+LABEL description="Streamlit-Flask App"
 
 # Copy /venv from the previous stage
 COPY --from=build /venv /venv
